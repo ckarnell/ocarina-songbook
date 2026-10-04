@@ -1,0 +1,23 @@
+[project]
+name = "ocarina-songbook"
+version = "0.1.0"
+description = "Make, check, hear and play songs for Link's ocarina, and send them to the Jev stream"
+requires-python = ">=3.10"
+dependencies = []
+
+[project.optional-dependencies]
+play = ["pynput>=1.7"]
+test = ["pytest>=7"]
+
+[project.scripts]
+ocarina = "ocarina_songbook.cli:main"
+
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+packages = ["ocarina_songbook"]
+
+[tool.setuptools.package-data]
+ocarina_songbook = ["reserved_keys.txt"]
