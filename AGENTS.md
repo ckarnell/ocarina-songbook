@@ -42,7 +42,10 @@ spell ocarina buttons by hand.
    transposition as the melody, every note starting on a beat the drums
    hit, bass velocity at most 84, parts at most 66. Validate again.
 8. **Hand over**: tell the person the file is ready and that they send it
-   as a pull request with just that one file (CONTRIBUTING.md).
+   as a pull request with just that one file to THIS repo,
+   github.com/ckarnell/ocarina-songbook (fork, branch, PR here; see
+   CONTRIBUTING.md). The stream's harness is private and pulls merged songs
+   from here: never look for it or send songs anywhere else.
 
 ## Don'ts
 

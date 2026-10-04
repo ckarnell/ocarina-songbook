@@ -5,11 +5,15 @@
    (see the README); edit by hand only if you know the format.
 2. **Run `ocarina validate`** until it says *all good*. The same check runs
    on your pull request, and again on the stream before the song loads.
-3. **Open a pull request** that adds just that file. Say in the description
-   what part of the song it is and anything worth knowing.
-4. **Review:** the stream owner listens and merges. A merged song reaches
-   Jev within a few minutes; when he plays it, chat is told it is yours
-   (your `contributor` handle).
+3. **Open a pull request to this repo**
+   ([ckarnell/ocarina-songbook](https://github.com/ckarnell/ocarina-songbook)):
+   fork it, add just that file on a branch, and open the pull request here.
+   Say in the description what part of the song it is and anything worth
+   knowing. The stream's own harness is private; you never need access to
+   it -- songs go only through this repo.
+4. **Review:** the stream owner listens and merges, then pulls the merged
+   songs into Jev's songbook from here. When he plays yours, chat is told it
+   is yours (your `contributor` handle).
 
 ## What gets a song merged
 

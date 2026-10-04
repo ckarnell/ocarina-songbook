@@ -63,9 +63,10 @@ python3 -m venv .venv && .venv/bin/pip install -e '.[test]'
    your keys, take out the ocarina, then
    `.venv/bin/ocarina play songs/ode_to_joy.json --keys keys.json`.
 5. Check it: `.venv/bin/ocarina validate`.
-6. Open a pull request with your one new file. See [CONTRIBUTING.md](CONTRIBUTING.md).
-   Once it is merged, the stream pulls it into Jev's songbook and he can
-   play it, credited to the `contributor` you wrote.
+6. Open a pull request **to this repo** (fork, add your one new file, PR
+   here). See [CONTRIBUTING.md](CONTRIBUTING.md). The stream's harness is
+   private: once your song is merged here, the stream pulls it into Jev's
+   songbook and he can play it, credited to the `contributor` you wrote.
 
 ## With an AI
 
