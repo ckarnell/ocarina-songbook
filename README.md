@@ -31,7 +31,7 @@ never have to spell these yourself: `ocarina build` does it.
 Python 3.10+, nothing else needed to build, check and preview.
 
 ```bash
-git clone <this repo> && cd ocarina-songbook
+git clone https://github.com/ckarnell/ocarina-songbook && cd ocarina-songbook
 python3 -m venv .venv && .venv/bin/pip install -e '.[test]'
 # optional, to play into your own game: .venv/bin/pip install -e '.[play]'
 ```
@@ -64,6 +64,8 @@ python3 -m venv .venv && .venv/bin/pip install -e '.[test]'
    `.venv/bin/ocarina play songs/ode_to_joy.json --keys keys.json`.
 5. Check it: `.venv/bin/ocarina validate`.
 6. Open a pull request with your one new file. See [CONTRIBUTING.md](CONTRIBUTING.md).
+   Once it is merged, the stream pulls it into Jev's songbook and he can
+   play it, credited to the `contributor` you wrote.
 
 ## With an AI
 
