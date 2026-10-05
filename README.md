@@ -38,9 +38,13 @@ python3 -m venv .venv && .venv/bin/pip install -e '.[test]'
 
 ## Make a song
 
-1. Find a transcription of the part you want (sheet music, a letter-note or
-   tab site). Pick a short, recognisable passage: 10-20 seconds is ideal, 45
-   at most.
+1. Find a transcription of the part you want. Best is a per-note tab:
+   `.venv/bin/ocarina fetch search "<artist> <song>"`, then `fetch meta` and
+   `fetch track` give every note of every instrument from Songsterr (lyrics
+   stripped); `fetch hooktheory` gives a Hooktheory melody to check it
+   against. Sheet music or a letter-note site works too. Pick a short,
+   recognisable passage: about 16 beats (10-20 seconds) is ideal, 45 s at
+   most. See `examples/` for songs exactly as Jev plays them on stream.
 2. Write it as note names with octaves, plus one length in beats per note
    (`R` is a rest and needs a length too):
 
@@ -77,6 +81,12 @@ spelling and the checking.
   the chorus of September by Earth, Wind & Fire"*. The `make-ocarina-song`
   skill in `.claude/skills/` walks it through.
 - **Codex** and other agents: the same steps are in [AGENTS.md](AGENTS.md).
+
+It is the same process the stream's own composer uses for every song Jev
+knows. `examples/` has six of them (Green Hill Zone, Seinfeld, Through the
+Fire and Flames, Toxic, Dire Dire Docks, In the End), each with a `rhythm`
+note on how its notes, beats and tempo were worked out: compare your result
+with those.
 
 ## Hear the band, and use the stream's OoT instruments
 
@@ -145,12 +155,16 @@ data in it, and you never need the ROM to contribute a song.
 
 On stream Jev's ocarina plays with a backing band. A song may ask for:
 
-- `"drums"`: one of `rock`, `ballad`, `shuffle`, `waltz`, `sixeight`,
-  `march`, `stomp`, `disco`, `orchestral`, `none` (or
+- `"drums"`: best, the song's own groove from its drum track:
+  `{"style": "custom", "pattern": [8, [[beat, gm_drum_key, velocity], ...]], "intro_beats": 4}`
+  (the pattern repeats from the first note; `"start"` shifts it for a
+  pickup). Or a stock style: `rock`, `ballad`, `shuffle`, `waltz`,
+  `sixeight`, `march`, `stomp`, `disco`, `orchestral`, `none` (or
   `{"style": "rock", "intro_beats": 4}` for a count-in);
 - `"bass"`: `{"program": 33, "velocity": 80, "notes": [[beat, midi_pitch, length_beats], ...]}`,
   beats counted from the first ocarina note (negative = before it);
-- `"parts"`: up to 3 more instruments in the same form (General MIDI programs).
+- `"parts"`: up to 3 more instruments in the same form (General MIDI programs);
+- `"rhythm"`: one line on where the notes, beats and tempo came from.
 
 The ocarina has to stay the loudest voice: bass velocity at most 84, parts at
 most 66, and keep parts out of the ocarina's register (B3..F5) where you can.

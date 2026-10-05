@@ -16,6 +16,7 @@ import json
 import sys
 from pathlib import Path
 
+from . import fetch as fetch_mod
 from . import validate as v
 from .build import build_entry
 from .timing import total_seconds
@@ -139,6 +140,13 @@ def main(argv: list[str] | None = None) -> int:
     k.add_argument("--keys", required=True, help="keys.json (see keys.example.json)")
     k.add_argument("--countdown", type=float, default=3.0)
     k.set_defaults(fn=cmd_play)
+
+    x = sub.add_parser("fetch", help="note data from Songsterr / Hooktheory, lyrics stripped "
+                                     "(search, meta, track, hooktheory)")
+    x.add_argument("rest", nargs=argparse.REMAINDER,
+                   help='e.g. search "never gonna give you up"; meta <songId>; '
+                        "track <songId> <revisionId> <image> <trackIndex>; hooktheory <hash>")
+    x.set_defaults(fn=lambda a: fetch_mod._main(a.rest))
 
     a = p.parse_args(argv)
     return a.fn(a)

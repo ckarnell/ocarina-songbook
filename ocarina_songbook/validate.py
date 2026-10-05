@@ -38,7 +38,12 @@ MAX_PART_NOTES = 600
 
 REQUIRED = ("name", "artist", "contributor", "notes", "bpm", "beats", "letters", "key",
             "part", "sources")
-OPTIONAL = ("drums", "bass", "parts", "max_seconds")
+OPTIONAL = ("drums", "bass", "parts", "max_seconds", "rhythm")
+# A song's own groove, written in the file ("style": "custom" + "pattern"):
+# [bar length in beats, [[beat, GM drum key, velocity], ...]] -- the shape the
+# stream's custom styles have (its songs/drums.json), so it plays the same.
+PATTERN_MAX_BEATS = 160
+PATTERN_MAX_HITS = 1024
 FIELD_HELP = {
     "name": "the song's title",
     "artist": "who made the original",
@@ -159,6 +164,8 @@ def validate_entry(key: str, entry: Any) -> list[str]:
         elif isinstance(notes, list) and len(beats) != len(notes):
             errs.append(f"\"beats\" has {len(beats)} lengths for {len(notes)} notes: one each")
 
+    if "rhythm" in entry and not _text_ok(entry["rhythm"], 2000):
+        errs.append("\"rhythm\" must be text without line breaks (how you got the beats and tempo)")
     if "max_seconds" in entry:
         ms = _num(entry["max_seconds"])
         if ms is None or not 5 <= ms <= CONTRIB_MAX_SECONDS:
@@ -167,11 +174,16 @@ def validate_entry(key: str, entry: Any) -> list[str]:
     d = entry.get("drums")
     if "drums" in entry:
         spec = {"style": d} if isinstance(d, str) else d
-        if not isinstance(spec, dict) or spec.get("style") not in DRUM_STYLES:
+        if not isinstance(spec, dict) or spec.get("style") not in DRUM_STYLES + ("custom",):
             errs.append(f"\"drums\" must be one of {list(DRUM_STYLES)} or "
-                        f"{{\"style\": ..., \"intro_beats\": n, \"start\": beat, \"ending\": bool}}")
+                        f"{{\"style\": ..., \"intro_beats\": n, \"start\": beat, \"ending\": bool}}"
+                        f" (style \"custom\" with a \"pattern\": the song's own groove)")
         else:
-            extra = set(spec) - {"style", "intro_beats", "start", "ending"}
+            if spec.get("style") == "custom":
+                errs += _pattern_errors(spec.get("pattern"))
+            elif "pattern" in spec:
+                errs.append("\"drums\".pattern goes with \"style\": \"custom\"")
+            extra = set(spec) - {"style", "intro_beats", "start", "ending", "pattern"}
             if extra:
                 errs.append(f"\"drums\": unknown field(s) {sorted(extra)}")
             ib = spec.get("intro_beats", 0)
@@ -199,6 +211,26 @@ def validate_entry(key: str, entry: Any) -> list[str]:
             errs.append(f"the song runs {_full_seconds(entry):.1f} s; it must fit in {cap:g} s "
                         f"(set \"max_seconds\" up to {CONTRIB_MAX_SECONDS:g}, or shorten it)")
     return errs
+
+
+def _pattern_errors(pat: Any) -> list[str]:
+    """Problems with a custom drum pattern [bar_len, [[beat, key, vel], ...]]."""
+    want = ("\"drums\".pattern must be [bar length in beats, [[beat, drum key 27-87, "
+            "velocity 1-127], ...]] with every beat inside the bar")
+    if not (isinstance(pat, list) and len(pat) == 2):
+        return [want]
+    n, hits = _num(pat[0]), pat[1]
+    if n is None or not 0 < n <= PATTERN_MAX_BEATS or not isinstance(hits, list) \
+            or not 1 <= len(hits) <= PATTERN_MAX_HITS:
+        return [want]
+    for h in hits:
+        if not (isinstance(h, list) and len(h) == 3):
+            return [want]
+        b, k, vel = _num(h[0]), h[1], h[2]
+        if (b is None or not 0 <= b < n or not isinstance(k, int) or not 27 <= k <= 87
+                or not isinstance(vel, int) or not 0 <= vel <= 127):
+            return [want]
+    return []
 
 
 def _full_seconds(entry: dict) -> float:
