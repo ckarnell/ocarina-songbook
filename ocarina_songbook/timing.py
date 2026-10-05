@@ -14,6 +14,7 @@ MIN_GAP = 0.05          # seconds between notes, at least
 MIN_HOLD = 0.08         # seconds a note is held, at least
 MAX_SECONDS = 20.0      # default cap on a song's length
 MAX_SECONDS_ANY = 90.0  # never longer, whatever the entry says
+MAX_SECONDS_AUDIO = 180.0  # the harness's "audio" entries (a recording, notes all REST)
 MAX_NOTES = 400
 
 
@@ -52,7 +53,8 @@ def song_timing(entry: dict) -> list[tuple[str | None, float, float]]:
             gap = max(d * (1.0 - HOLD_FRACTION), MIN_GAP)
             out.append((n, max(d - gap, MIN_HOLD), gap))
     try:
-        cap = min(float(entry.get("max_seconds") or MAX_SECONDS), MAX_SECONDS_ANY)
+        cap = min(float(entry.get("max_seconds") or MAX_SECONDS),
+                  MAX_SECONDS_AUDIO if entry.get("audio") else MAX_SECONDS_ANY)
     except (TypeError, ValueError, AttributeError):
         cap = MAX_SECONDS
     kept, total = [], 0.0
