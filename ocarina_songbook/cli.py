@@ -65,12 +65,26 @@ def cmd_validate(a) -> int:
 
 
 def cmd_preview(a) -> int:
-    from .preview import render
+    from .preview import render, render_band
     entry = json.loads(Path(a.file).read_text())
     out = Path(a.out or Path(a.file).with_suffix(".wav").name)
+    if a.band:
+        f, how = render_band(entry, out, a.soundfont)
+        if f.suffix == ".mid":
+            print(f"wrote {f} ({how}: open it in a MIDI player, or install FluidSynth and "
+                  "a GM SoundFont -- see README, 'Hear the band')")
+        else:
+            print(f"wrote {f} (the band and the ocarina, with {how})")
+        return 0
     secs = render(entry, out)
     print(f"wrote {out} ({secs:.1f} s)")
     return 0
+
+
+def cmd_soundfont(a) -> int:
+    from . import oot_soundfont
+    argv = ["--o2r", a.o2r] + (["--out", a.out] if a.out else [])
+    return oot_soundfont.main(argv) or 0
 
 
 def cmd_play(a) -> int:
@@ -107,10 +121,18 @@ def main(argv: list[str] | None = None) -> int:
     c.add_argument("files", nargs="*")
     c.set_defaults(fn=cmd_validate)
 
-    w = sub.add_parser("preview", help="render a song's melody to a WAV")
+    w = sub.add_parser("preview", help="render a song's melody (or, with --band, the whole band) to a WAV")
     w.add_argument("file")
     w.add_argument("--out")
+    w.add_argument("--band", action="store_true",
+                   help="drums, bass and parts with the ocarina, as on stream (FluidSynth + a GM SoundFont)")
+    w.add_argument("--soundfont", help="a .sf2 to render with (default: the OoT one if built, else a GM one)")
     w.set_defaults(fn=cmd_preview)
+
+    f = sub.add_parser("soundfont", help="build the stream's OoT SoundFont from your own Ship of Harkinian oot.o2r")
+    f.add_argument("--o2r", required=True, help="your SoH oot.o2r (made from your own ROM)")
+    f.add_argument("--out", help="default ~/Library/Audio/Sounds/Banks/OoT-Jev.sf2")
+    f.set_defaults(fn=cmd_soundfont)
 
     k = sub.add_parser("play", help="play a song into your own game with the keyboard")
     k.add_argument("file")

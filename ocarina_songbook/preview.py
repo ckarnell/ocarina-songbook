@@ -48,3 +48,47 @@ def render(entry: dict, path: Path | str) -> float:
         w.writeframes(b"".join(struct.pack("<h", int(max(-1, min(1, s)) * 32767))
                                for s in samples))
     return len(samples) / RATE
+
+
+# ---- the band ---------------------------------------------------------------
+# The whole song as the stream plays it (band.song_midi), rendered with
+# FluidSynth and a General MIDI SoundFont: the OoT one if you built it
+# (`ocarina soundfont`), else a free GM one such as GeneralUser GS. Without
+# FluidSynth the .mid is written, for any MIDI player.
+
+SOUNDFONT_PLACES = (
+    "~/Library/Audio/Sounds/Banks/OoT-Jev.sf2",
+    "~/.local/share/soundfonts/OoT-Jev.sf2",
+    "~/Library/Audio/Sounds/Banks/GeneralUser-GS.sf2",
+    "~/.local/share/soundfonts/GeneralUser-GS.sf2",
+    "/usr/share/sounds/sf2/FluidR3_GM.sf2",
+    "/usr/share/soundfonts/FluidR3_GM.sf2",
+)
+
+
+def find_soundfont(given: str | None = None) -> Path | None:
+    import os
+    for p in ([given] if given else []) + list(SOUNDFONT_PLACES):
+        q = Path(os.path.expanduser(p))
+        if q.exists():
+            return q
+    return None
+
+
+def render_band(entry: dict, path: Path | str, soundfont: str | None = None,
+                melody: bool = True) -> tuple[Path, str]:
+    """Write the song with its band: a WAV at `path` when FluidSynth and a
+    SoundFont are found, else a .mid beside it. Returns (file, what font)."""
+    import shutil
+    import subprocess
+    from .band import song_midi
+    path = Path(path)
+    mid = path.with_suffix(".mid")
+    mid.write_bytes(song_midi(entry, melody=melody))
+    fs = shutil.which("fluidsynth")
+    sf = find_soundfont(soundfont)
+    if not fs or not sf:
+        return mid, ("no FluidSynth" if not fs else "no SoundFont found")
+    subprocess.run([fs, "-ni", "-q", "-F", str(path), "-r", "44100", "-g", "0.8",
+                    str(sf), str(mid)], check=True, timeout=120, capture_output=True)
+    return path, sf.name

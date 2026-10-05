@@ -78,6 +78,69 @@ spelling and the checking.
   skill in `.claude/skills/` walks it through.
 - **Codex** and other agents: the same steps are in [AGENTS.md](AGENTS.md).
 
+## Hear the band, and use the stream's OoT instruments
+
+On stream every song's band (drums, bass, parts) is played with a SoundFont
+built from **Ocarina of Time's own instrument samples**. It is laid out on
+General MIDI program numbers, so a part asks for an OoT instrument just by
+its `program`:
+
+| GM program | OoT instrument |
+|---|---|
+| 0 | Piano |
+| 6 | Harpsichord |
+| 9 | Glockenspiel |
+| 12 | Marimba |
+| 19 | Church Organ |
+| 21 | Accordion |
+| 24 | Nylon Guitar |
+| 33 | Finger Bass |
+| 36 | Slap Bass |
+| 38 | Synth Bass |
+| 40 | Viola |
+| 45 | Pizzicato |
+| 46 | Harp |
+| 48 | Strings |
+| 52 | Choir Aahs |
+| 53 | Voice Oohs |
+| 56 | Trumpet |
+| 57 | Trombone |
+| 58 | Tuba |
+| 60 | French Horn |
+| 68 | Oboe |
+| 70 | Bassoon |
+| 71 | Clarinet |
+| 73 | Flute |
+| 79 | Ocarina |
+| 104 | Sitar |
+| 105 | Banjo |
+| 107 | Koto |
+| 110 | Fiddle |
+| 114 | Steel Drum |
+
+Drums (any `drums` style) use the game's own kit on the standard GM drum keys
+(35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 60, 61, 62, 63, 64, 70). A program not in the table has no OoT sound on stream: stick to the
+table.
+
+**Hear it** with the band, as on stream:
+
+```bash
+.venv/bin/ocarina preview songs/your_song.json --band
+```
+
+That needs [FluidSynth](https://www.fluidsynth.org/) (`brew install fluid-synth`,
+`apt install fluidsynth`) and a General MIDI SoundFont. Without the OoT one,
+a free GM font such as [GeneralUser GS](https://schristiancollins.com/generaluser.php)
+(put the .sf2 in `~/Library/Audio/Sounds/Banks/` or `~/.local/share/soundfonts/`)
+plays the same programs with ordinary instruments: close enough to hear the
+parts, the levels and the timing. Without FluidSynth you get a `.mid` to open
+in any MIDI player. `--soundfont PATH` picks a font.
+
+**The real OoT sound**, if you have Ship of Harkinian set up with your own
+ROM: `ocarina soundfont --o2r path/to/oot.o2r` builds `OoT-Jev.sf2` from your
+own copy, and `preview --band` uses it from then on. This repo has no game
+data in it, and you never need the ROM to contribute a song.
+
 ## What the band adds on stream
 
 On stream Jev's ocarina plays with a backing band. A song may ask for:

@@ -57,3 +57,12 @@ spell ocarina buttons by hand.
 - Don't edit other songs, the tool, or the reserved list.
 - Don't add fields the validator rejects (no `soundfont`, no `asked_by`).
 - Don't open the pull request for them unless they ask you to.
+
+## Backing band: OoT instruments and the band preview
+
+Bass and parts may use only the GM programs in README's table "Hear the band,
+and use the stream's OoT instruments" (OoT Strings 48, Trumpet 56, Flute 73,
+Harp 46, Steel Drum 114, ...): on stream they sound with Ocarina of Time's own
+samples. Check the whole arrangement with `.venv/bin/ocarina preview
+songs/<slug>.json --band` (FluidSynth + a GM SoundFont; a .mid without them):
+the ocarina must stay the loudest voice. Never ask the contributor for a ROM.
