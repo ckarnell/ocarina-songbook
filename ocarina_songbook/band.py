@@ -91,6 +91,14 @@ def plan(timing: list, entry: dict) -> tuple[list[tuple[float, int, int]], float
     spb = total / sum(beats)                     # seconds a beat, slow-downs included
     all_styles = STYLES
     bar_len, bar = all_styles.get(style) or all_styles["rock"]
+    # The song's own groove, written in its file (validate: style "custom").
+    pat = spec.get("pattern")
+    if style == "custom" and isinstance(pat, list) and len(pat) == 2:
+        try:
+            bar_len = float(pat[0])
+            bar = [(float(h[0]), int(h[1]), int(h[2])) for h in pat[1]]
+        except (TypeError, ValueError, IndexError):
+            bar_len, bar = all_styles["rock"]
     try:
         intro_beats = max(0.0, min(16.0, float(spec.get("intro_beats") or 0)))
         start = float(spec.get("start") or 0)
