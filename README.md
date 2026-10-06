@@ -83,7 +83,7 @@ spelling and the checking.
 - **Codex** and other agents: the same steps are in [AGENTS.md](AGENTS.md).
 
 It is the same process the stream's own composer uses for every song Jev
-knows. `examples/` has six of them (Green Hill Zone, Seinfeld, Through the
+knows. `examples/` has seven of them (Green Hill Zone, Seinfeld, Raining Blood, Through the
 Fire and Flames, Toxic, Dire Dire Docks, In the End), each with a `rhythm`
 note on how its notes, beats and tempo were worked out: compare your result
 with those.
