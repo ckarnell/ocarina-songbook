@@ -4,7 +4,7 @@
 
 You are helping someone add a song to this songbook, to be played on Link's
 ocarina by Jev on stream. This is the same process the stream's composer
-uses for every song Jev knows; `examples/` holds six of those songs exactly
+uses for every song Jev knows; `examples/` holds seven of those songs exactly
 as Jev plays them (read two before you start -- their `rhythm` field says how
 each one was worked out). Your job is the musical part: find the real melody,
 rhythm and band parts. The `ocarina` tool does the spelling and checking.
