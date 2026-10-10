@@ -2,9 +2,9 @@
   "name": "Force Your Way",
   "artist": "Nobuo Uematsu (Final Fantasy VIII)",
   "contributor": "ReiMasa",
-  "part": "opening arpeggio, saw-lead theme and organ transition (first 40 seconds)",
+  "part": "opening arpeggio, saw-lead theme and descending transition (first 40 seconds)",
   "key": "A minor moving to B minor; source pitch classes, octave-folded for ocarina range",
-  "letters": "A4 A4 D4 C4 E4 D4 G4 E4 A4 G4 C5 A4 D5 C5 E5 D5 A4 G4 C5 D5 E5 D5 G4 A4 A4 G4 C4 D4 E4 D4 G4 A4 A4 A4 D4 C4 E4 D4 G4 E4 A4 G4 C5 A4 D5 C5 E5 D5 A4 G4 C5 D5 E5 D5 G4 A4 A4 G4 C4 D4 E4 D4 G4 A4 A4 G4 B3 B3 E4 D4 F#4 E4 A4 F#4 B4 A4 D5 B4 E5 D5 F#4 E5 B4 A4 D5 E5 F#4 E5 A4 B4 B4 A4 D4 E4 F#4 E4 A4 B3 B3 B3 E4 D4 F#4 E4 A4 F#4 B4 A4 D5 B4 E5 D5 F#4 E5 B4 A4 D5 E5 F#4 E5 A4 B4 B4 A4 D4 E4 F#4 E4 A4 B3 D4 A4 B3 F#4 A4 G#4 A4 E5 F5 A4 E5 A4 D5 A4 C5 A4 B4 A4 A4 A4 G#4 A4 B4 G#4 A4 B4 C5 A4 B4 C5 D5 B4 C5 D5 E5 F5 E5 D#5 E5 B4 C5 E5 B4 E5 A4 E5 G4 E5 F#4 E5 E4 E5 D#4 E4 F#4 D#4 E4 F#4 G4 E4 F#4 G4 A4 C5 B4 C#5 D#5 F#4 C5 F5 C5 A4 F5 C5 F5 G#4 F5 C#5 G#4 F5 D#5 D#5 G#4 B4 D#5 G#4 G#4 G#4 E5 B4 B4 G4 F#4 F#4",
+  "letters": "A4 A4 D4 C4 E4 D4 G4 E4 A4 G4 C5 A4 D5 C5 E5 D5 A4 G4 C5 D5 E5 D5 G4 A4 A4 G4 C4 D4 E4 D4 G4 A4 A4 A4 D4 C4 E4 D4 G4 E4 A4 G4 C5 A4 D5 C5 E5 D5 A4 G4 C5 D5 E5 D5 G4 A4 A4 G4 C4 D4 E4 D4 G4 A4 A4 G4 B3 B3 E4 D4 F#4 E4 A4 F#4 B4 A4 D5 B4 E5 D5 F#4 E5 B4 A4 D5 E5 F#4 E5 A4 B4 B4 A4 D4 E4 F#4 E4 A4 B3 B3 B3 E4 D4 F#4 E4 A4 F#4 B4 A4 D5 B4 E5 D5 F#4 E5 B4 A4 D5 E5 F#4 E5 A4 B4 B4 A4 D4 E4 F#4 E4 A4 B3 D4 A4 B3 F#4 A4 G#4 A4 E5 F5 A4 E5 A4 D5 A4 C5 A4 B4 A4 A4 A4 G#4 A4 B4 G#4 A4 B4 C5 A4 B4 C5 D5 B4 C5 D5 E5 F5 E5 D#5 E5 B4 C5 E5 B4 E5 A4 E5 G4 E5 F#4 E5 E4 E5 D#4 E4 F#4 D#4 E4 F#4 G4 E4 F#4 G4 A4 C5 B4 C#5 D#5 F#4 C5 B4 A4 G4 F4 D#4 C#4 C4 D#5 C#5 B4 A#4 G#4 A#4 B4 C#5 B4",
   "sources": [
     "https://vgmusic.com/file/884bcf7d7eb0e3b33de0f03ffa77159b.html",
     "https://vgmusic.com/file/c693e225117082aaa8da323a99dbc1e1.html"
@@ -209,32 +209,23 @@
     0.5,
     0.5,
     0.5,
-    0.66667,
-    0.66666,
-    0.66667,
-    0.66667,
-    0.66666,
-    0.66667,
-    0.66667,
-    0.66666,
-    0.66667,
-    0.66667,
-    0.66666,
-    0.66667,
-    0.66667,
-    0.66666,
-    0.66667,
-    0.66667,
-    0.66666,
-    0.66667,
-    0.66667,
-    0.66666,
-    0.66667,
-    0.66667,
-    0.66666,
-    0.66667,
     1.0,
-    0.5
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
   ],
   "notes": [
     "C_RIGHT",
@@ -436,36 +427,27 @@
     "C_UP+R",
     "C_DOWN+R",
     "C_UP+DOWN",
-    "C_UP+UP+R",
-    "C_UP+DOWN",
+    "C_LEFT",
     "C_RIGHT",
-    "C_UP+UP+R",
-    "C_UP+DOWN",
-    "C_UP+UP+R",
-    "C_RIGHT+Z",
-    "C_UP+UP+R",
-    "C_UP+Z",
-    "C_RIGHT+Z",
-    "C_UP+UP+R",
-    "C_UP+R",
-    "C_UP+R",
-    "C_RIGHT+Z",
-    "C_LEFT",
-    "C_UP+R",
-    "C_RIGHT+Z",
-    "C_RIGHT+Z",
-    "C_RIGHT+Z",
-    "C_UP+UP",
-    "C_LEFT",
-    "C_LEFT",
     "C_DOWN+UP",
-    "C_DOWN+R",
-    "C_DOWN+R"
+    "C_DOWN",
+    "A+R",
+    "A+Z",
+    "A+DOWN",
+    "C_UP+R",
+    "C_UP+Z",
+    "C_LEFT",
+    "C_LEFT+Z",
+    "C_RIGHT+Z",
+    "C_LEFT+Z",
+    "C_LEFT",
+    "C_UP+Z",
+    "C_LEFT"
   ],
   "drums": {
     "style": "custom",
     "pattern": [
-      116.5,
+      116.0,
       [
         [
           0.0,
@@ -2508,7 +2490,7 @@
           30
         ],
         [
-          99.0,
+          99,
           42,
           30
         ],
@@ -2523,7 +2505,7 @@
           30
         ],
         [
-          100.0,
+          100,
           42,
           30
         ],
@@ -2538,7 +2520,7 @@
           30
         ],
         [
-          101.0,
+          101,
           42,
           30
         ],
@@ -2553,7 +2535,7 @@
           30
         ],
         [
-          102.0,
+          102,
           42,
           30
         ],
@@ -2568,7 +2550,7 @@
           30
         ],
         [
-          103.0,
+          103,
           42,
           30
         ],
@@ -2583,7 +2565,7 @@
           30
         ],
         [
-          104.0,
+          104,
           42,
           30
         ],
@@ -2598,7 +2580,7 @@
           30
         ],
         [
-          105.0,
+          105,
           42,
           30
         ],
@@ -2613,7 +2595,7 @@
           30
         ],
         [
-          106.0,
+          106,
           42,
           30
         ],
@@ -2628,7 +2610,7 @@
           30
         ],
         [
-          107.0,
+          107,
           42,
           30
         ],
@@ -2643,7 +2625,7 @@
           30
         ],
         [
-          108.0,
+          108,
           42,
           30
         ],
@@ -2658,7 +2640,7 @@
           30
         ],
         [
-          109.0,
+          109,
           42,
           30
         ],
@@ -2673,7 +2655,7 @@
           30
         ],
         [
-          110.0,
+          110,
           42,
           30
         ],
@@ -2688,7 +2670,7 @@
           30
         ],
         [
-          111.0,
+          111,
           42,
           30
         ],
@@ -2703,7 +2685,7 @@
           30
         ],
         [
-          112.0,
+          112,
           42,
           30
         ],
@@ -2718,7 +2700,7 @@
           30
         ],
         [
-          113.0,
+          113,
           42,
           30
         ],
@@ -2733,7 +2715,7 @@
           30
         ],
         [
-          114.0,
+          114,
           42,
           30
         ],
@@ -2761,16 +2743,6 @@
           115.5,
           36,
           102
-        ],
-        [
-          116.0,
-          38,
-          92
-        ],
-        [
-          116.0,
-          42,
-          48
         ]
       ]
     ],
@@ -2778,7 +2750,7 @@
     "start": 0
   },
   "max_seconds": 41.0,
-  "rhythm": "ReiMasa (Twitch: Acry). First 116.5 quarter-note beats (39.94 s) of the FFVIII boss theme at 175 BPM. VGMusic/Gigasoft ff850.mid: track 4 Ocarina opening sixteenths are thinned to every other onset (eighths) through beat 67; track 5 Sawtooth Wave supplies the lead from beats 67-99; the top line of track 1 Rock Organ supplies beats 99-116.5, its triplets thinned to every other onset to avoid tempo stretch. Tracks 1 Rock Organ, 2 String Ensemble, 3 Electric Bass, and 8 Percussion provide source-based backing; all lead pitch classes are kept, octave-folded into ocarina range. SinclairC ff8boss.mid independently confirms the opening organ, bass, kit, and arpeggio, then the saw lead and guitar transition.",
+  "rhythm": "ReiMasa (Twitch: Acry). First 116 quarter-note beats (39.77 s) of the FFVIII boss theme at 175 BPM. VGMusic/Gigasoft ff850.mid: track 4 Ocarina opening sixteenths are thinned to every other onset (eighths) through beat 67; track 5 Sawtooth Wave supplies the lead from beats 67-99; the top line of track 2 String Ensemble supplies the descending transition at beats 99-115; the B-minor chord root from track 1 closes at beat 115, held to beat 116. Tracks 1 Rock Organ, 2 String Ensemble, 3 Electric Bass, and 8 Percussion provide source-based backing; all lead pitch classes are kept, octave-folded into ocarina range. SinclairC ff8boss.mid independently confirms the opening organ, bass, kit, and arpeggio, then the saw lead and guitar transition. The previous organ-triplet sampling and half-beat cutoff were replaced by this steadier scored lead and full B-minor arrival.",
   "bass": {
     "program": 33,
     "velocity": 78,
@@ -5157,21 +5129,6 @@
         ],
         [
           115.0,
-          66,
-          0.25
-        ],
-        [
-          116.0,
-          59,
-          0.25
-        ],
-        [
-          116.0,
-          62,
-          0.25
-        ],
-        [
-          116.0,
           66,
           0.25
         ]
